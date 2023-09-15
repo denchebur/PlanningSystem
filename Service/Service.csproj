@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{6F32C490-C655-4A5B-9EEE-9C27B85C5DED}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>Service</RootNamespace>
+        <AssemblyName>Service</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="mscorlib" />
+        <Reference Include="System" />
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Numerics" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.ServiceModel" />
+        <Reference Include="System.ServiceModel.Web" />
+        <Reference Include="System.Transactions" />
+        <Reference Include="System.Web" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Data\PlanTask.cs" />
+        <Compile Include="Data\PlanTaskContext.cs" />
+        <Compile Include="Data\PriorityTask.cs" />
+        <Compile Include="Data\StatusTask.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Providers\IPlanTaskOperationProvider.cs" />
+        <Compile Include="Providers\PlanTaskOperationProvider.cs" />
+        <Compile Include="Services\PlanTaskExtention.cs" />
+        <Compile Include="Services\PlanTaskService.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Contract\Contract.csproj">
+        <Project>{955f1d08-2965-422a-9826-d64a659e8feb}</Project>
+        <Name>Contract</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\Notification\Notification.csproj">
+        <Project>{b8eb11a2-caa3-4b1a-9f02-388ded3aeff2}</Project>
+        <Name>Notification</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Apache.NMS" Version="2.0.0" />
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
+      <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0-rc.1.21451.13" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0-rc.1.21451.13" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0-rc.1.21451.13" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="NLog" Version="5.0.0-preview.1" />
+      <PackageReference Include="NLog.Config" Version="4.7.11" />
+      <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0-preview.1" />
+      <PackageReference Include="System.Buffers" Version="4.5.1" />
+      <PackageReference Include="System.ComponentModel.Annotations" Version="6.0.0-preview.4.21253.7" />
+      <PackageReference Include="System.Memory" Version="4.5.4" />
+      <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0-rc.1.21451.13" />
+      <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>
